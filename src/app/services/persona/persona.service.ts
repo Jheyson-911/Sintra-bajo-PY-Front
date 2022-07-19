@@ -11,4 +11,13 @@ export class PersonaService {
   getPersonas(){
     return this.http.get(`${this.URL}`);
   }
+  deletePersona(id:number){
+    return this.http.delete(`${this.URL}/${id}`);
+  }
+  createPersona(persona:any){
+    return this.http.post(`${this.URL}`,persona);
+  }
+  editPersona(persona:any){
+    return this.http.put(`${this.URL}/${persona.id}`,persona);
+  }
 }

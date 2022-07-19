@@ -1,3 +1,4 @@
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -17,7 +18,9 @@ import { UsuarioComponent } from './components/usuario/usuario.component';
   ],
   imports: [
     CommonModule,
-    PersonaRoutingModule
+    PersonaRoutingModule,
+    ReactiveFormsModule,
+    FormsModule
   ]
 })
 export class PersonaModule { }

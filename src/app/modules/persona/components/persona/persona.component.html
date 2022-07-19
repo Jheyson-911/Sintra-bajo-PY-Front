@@ -1,34 +1,100 @@
-<div class="container mob-table">
-    <div class="headers">
-        <h2 class="table-title">Administrar Persona</h2>
-        <button class="btn add">Agregar Estudiante</button>
+  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <form [formGroup]="personaSendForm" (submit)="createPerson()">
+            <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="staticBackdropLabel">Crear nueva Persona</h5>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="recipient-name" class="col-form-label">Nombre:</label>
+                        <input type="text" class="form-control" id="recipient-name" formControlName="nombre">
+                        <label for="recipient-name" class="col-form-label">Apellido Paterno:</label>
+                        <input type="text" class="form-control" id="recipient-name" formControlName="apellidoPaterno">
+                        <label for="recipient-name" class="col-form-label">Apellido Materno:</label>
+                        <input type="text" class="form-control" id="recipient-name" formControlName="apellidoMaterno">
+                        <label for="recipient-name" class="col-form-label">Dni:</label>
+                        <input type="text" class="form-control" id="recipient-name" formControlName="dni">
+                        <label for="recipient-name" class="col-form-label">Correo:</label>
+                        <input type="text" class="form-control" id="recipient-name" formControlName="correo">
+                        <label for="recipient-name" class="col-form-label">Celular:</label>
+                        <input type="text" class="form-control" id="recipient-name" formControlName="celular">
+                      </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-danger font-color" data-bs-dismiss="modal">Close</button>
+                  <button type="submit" class="btn add" data-bs-dismiss="modal">Enviar</button>
+                </div>
+              </div>
+        </form>
     </div>
+  </div>
 
-    <table class="table table-striped">
+
+  <div class="container mob-table">
+    <div class="headers">
+        <h2 class="table-title">{{messageList}}</h2>
+        <button type="button" class="btn add" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Agregar Persona</button>
+    </div>
+    <table class="table table-hover">
         <thead>
-            <tr>
-                <th>Id</th>
-                <th>Codigo</th>
-                <th>Ciclo</th>
-                <th>Año</th>
-                <th>Persona Id</th>
-                <th>Estado</th>
-                <th></th>
-                <th></th>
-            </tr>
+          <tr>
+            <th scope="col">id</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Apellido Paterno</th>
+            <th scope="col">Apellido Materno</th>
+            <th scope="col">Dni</th>
+            <th scope="col">Correo</th>
+            <th scope="col">Celular</th>
+            <th scope="col">Opciones</th>
+          </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>1</td>
-                <td>202013998</td>
-                <td>VI</td>
-                <td>2022-2</td>
-                <td>1</td>
-                <td>0</td>
-                <td><button class="btn btn-primary">Editar</button></td>
-                <td><button class="btn btn-danger">Eleminar</button></td>
-            </tr>
+        <tr *ngFor="let persona of personas">
+            <th scope="row">{{persona.id}}</th>
+            <th scope="row">{{persona.nombre}}</th>
+            <th scope="row">{{persona.apellidoPaterno}}</th>
+            <th scope="row">{{persona.apellidoMaterno}}</th>
+            <th scope="row">{{persona.dni}}</th>
+            <th scope="row">{{persona.correo}}</th>
+            <th scope="row">{{persona.celular}}</th>
+            <th scope="row"><button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editModal" (click)="getPetsona(persona)">Editar</button></th>
+            <th scope="row"><button class="btn btn-danger font-color" (click)="deletePerson(persona.id)">Eliminar</button></th>
+        </tr>
         </tbody>
+      </table>
+</div>
 
-    </table>
+
+
+<div class="modal fade" id="editModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+      <form [formGroup]="personEditForm" (submit)="editPerson(personas)">
+          <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Edit persona</h5>
+              </div>
+              <div class="modal-body">
+                  <div class="mb-3">
+                      <label for="recipient-name" class="col-form-label" >Nombre:</label>
+                      <input type="text" class="form-control" id="recipient-name" formControlName="nombre">
+                      <label for="recipient-name" class="col-form-label">Apellido Paterno:</label>
+                      <input type="text" class="form-control" id="recipient-name" formControlName="apellidoPaterno">
+                      <label for="recipient-name" class="col-form-label">Apellido Materno:</label>
+                      <input type="text" class="form-control" id="recipient-name" formControlName="apellidoMaterno" >
+                      <label for="recipient-name" class="col-form-label">Dni:</label>
+                      <input type="text" class="form-control" id="recipient-name" formControlName="dni">
+                      <label for="recipient-name" class="col-form-label">Correo:</label>
+                      <input type="text" class="form-control" id="recipient-name" formControlName="correo">
+                      <label for="recipient-name" class="col-form-label">Celular:</label>
+                      <input type="text" class="form-control" id="recipient-name"formControlName="celular">
+                    </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-danger font-color" data-bs-dismiss="modal">Close</button>
+                <button type="submit" class="btn add" data-bs-dismiss="modal">Enviar</button>
+              </div>
+            </div>
+      </form>
+  </div>
 </div>
