@@ -1,0 +1,6 @@
+<p>documento works!</p>
+<input type="file" (change)="uploadDoc($event)" />
+
+<div>
+    <img [src]="doc" *ngFor="let doc of documentos">
+</div>
