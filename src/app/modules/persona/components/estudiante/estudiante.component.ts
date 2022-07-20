@@ -11,10 +11,12 @@ import { Component, OnInit } from '@angular/core';
 export class EstudianteComponent implements OnInit {
 
   public estudiantes:Array<any> = [];
+  public EditEstudiantes:Array<any> = [];
   public messageList: String='';
   public messageDelete: String='';
 
   public EstudianteForm:FormGroup = new FormGroup({})
+  public EditEstudainteForm:FormGroup = new FormGroup({})
 
   constructor(private http:HttpClient, private estudianteService:EstudianteService) { }
 
@@ -30,6 +32,7 @@ export class EstudianteComponent implements OnInit {
       dni: new FormControl('', Validators.required),
       estado_practicas: new FormControl('', Validators.required),
     });
+
   }
 
   getEstudiantes(){
@@ -42,14 +45,27 @@ export class EstudianteComponent implements OnInit {
     );
   }
 
+  editEstudiante(estudiante:any){
+
+  }
+
+  obtenerEstudiante(id:number){
+    this.estudianteService.obtenerEstudiante(id).subscribe(
+      (data:any) => {
+        this.EditEstudiantes = data.estudiante;
+        console.log(this.EditEstudiantes);
+        console.log()
+      }
+    );
+  }
+
 
   createEstudiante(){
     this.estudianteService.createEstudiante(this.EstudianteForm.value).subscribe(
       (data:any) => {
         this.messageList = data.message;
-        this.estudiantes.push(data.estudiante);
 
-        this.getEstudiantes();
+        this.estudiantes.push(data.estudiante);
 
       }
     );

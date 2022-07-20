@@ -10,6 +10,7 @@ import { SolitudComponent } from './components/solitud/solitud.component';
 import { EmpresaComponent } from './components/empresa/empresa.component';
 import { EvaluacionComponent } from './components/evaluacion/evaluacion.component';
 import { PracticasComponent } from './components/practicas/practicas.component';
+import { PostComponent } from './components/post/post.component';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { PracticasComponent } from './components/practicas/practicas.component';
     SolitudComponent,
     EmpresaComponent,
     EvaluacionComponent,
-    PracticasComponent
+    PracticasComponent,
+    PostComponent,
   ],
   imports: [
     CommonModule,

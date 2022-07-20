@@ -6,6 +6,7 @@ import { Injectable } from '@angular/core';
 })
 export class PracticasService {
   private URL = 'http://localhost:8080/api/practica';
+  private url_estudaintes = 'http://localhost:8080/api/estudiante';
 
   constructor(private http:HttpClient) { }
 
@@ -20,5 +21,12 @@ export class PracticasService {
   deletePractica(id:number){
     return this.http.delete(`${this.URL}/${id}`);
   }
-  
+  getEvaluaciones(id:number){
+    return this.http.get(`${this.URL}/${id}/evaluaciones`);
+  }
+  // ?PRACTICAS DE TODOS LO ESTUDIANTES
+
+  getPracticasEstudiantes(){
+    return this.http.get(`${this.url_estudaintes}/practicas/completo`);
+  }
 }

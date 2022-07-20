@@ -36,7 +36,6 @@ export class DocenteComponent implements OnInit {
       (data:any) => {
         this.messageList = data.message;
         this.docentes = data.docentes;
-        console.log(this.docentes);
       }
     );
   }
@@ -46,9 +45,6 @@ export class DocenteComponent implements OnInit {
       (data:any) => {
         this.messageList = data.message;
         this.docentes.push(data.docente);
-
-        this.getDocentes();
-
       }
     );
   }
@@ -58,7 +54,6 @@ export class DocenteComponent implements OnInit {
       (data:any) => {
         this.messageDelete = data.message;
         this.docentes = this.docentes.filter(docente => docente.id !== id);
-        this.getDocentes();
       }
     );
   }

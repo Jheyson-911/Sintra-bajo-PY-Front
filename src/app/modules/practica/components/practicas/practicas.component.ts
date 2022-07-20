@@ -23,11 +23,11 @@ export class PracticasComponent implements OnInit {
     this.getPracticas();
 
     this.PracticaForm = new FormGroup({
-      fecha_inicio: new FormControl(''  , [Validators.required]),
-      fecha_fin: new FormControl(''  , [Validators.required]),
-      horas: new FormControl(''  , [Validators.required]),
-      estado: new FormControl(''  , [Validators.required]),
-      tblEstudianteId: new FormControl(''  , [Validators.required]),
+      fecha_inicio: new FormControl('',[Validators.required]),
+      fecha_fin: new FormControl('',[Validators.required]),
+      horas: new FormControl('',[Validators.required]),
+      estado: new FormControl('',[Validators.required]),
+      tblEstudianteId: new FormControl('',[Validators.required]),
     });
   }
 
@@ -35,8 +35,7 @@ export class PracticasComponent implements OnInit {
     this.practicaService.getPracticas().subscribe(
       (data:any) => {
         this.messageListPractica = data.message;
-        this.practicas = data;
-        console.log(data);
+        this.practicas = data.practicas;
       }
     )
   }
@@ -45,16 +44,17 @@ export class PracticasComponent implements OnInit {
     this.practicaService.createPractica(this.PracticaForm.value).subscribe(
       (data:any) => {
         this.messageCreatePractica = data.message;
-        this.practicas.push(data.empresa);
+        this.practicas.push(data.practicas);
       }
     )
   }
+
   deletePractica(id:number){
     this.practicaService.deletePractica(id).subscribe(
       (data:any) => {
         this.messageDeletePractica = data.message;
-        this.practicas = data.practicas
-        this.practicas = this.practicas.filter(practica => practica.id != id);
+        this.practicas = this.practicas.filter(practica => practica.id !== id);
+        this.getPracticas();
       }
     )
   }

@@ -1,3 +1,4 @@
+import { PostComponent } from './components/post/post.component';
 import { SolitudComponent } from './components/solitud/solitud.component';
 import { PracticasComponent } from './components/practicas/practicas.component';
 import { EmpresaComponent } from './components/empresa/empresa.component';
@@ -51,6 +52,10 @@ const routes: Routes = [
       {
         path:'solicitudes',
         component: SolitudComponent
+      },
+      {
+        path:'post',
+        component: PostComponent
       }
     ],
     canActivate: [AuthTokenGuard],

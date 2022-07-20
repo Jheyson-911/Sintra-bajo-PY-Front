@@ -52,7 +52,7 @@ export class SolitudComponent implements OnInit {
     this.solicitudService.deleteSolicitud(id).subscribe(
       (data:any) => {
         this.messageList = data.message;
-        this.solicitudes = data.solicitudes;
+        this.solicitudes = this.solicitudes.filter(solicitud => solicitud.id !== id);
       }
     );
   }

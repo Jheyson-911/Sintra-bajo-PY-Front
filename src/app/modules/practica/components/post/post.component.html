@@ -1,47 +1,48 @@
-
+<p>post works!</p>
 <div class="container mob-table">
     <div class="headers">
-        <h2 class="table-title">{{messageListEmpresa}}</h2>
-        <button class="btn add" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Agregar Estudiante</button>
+        <h2 class="table-title">{{messageListPost}}</h2>
+        <button class="btn add" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Agregar Post</button>
     </div>
 
     <table class="table table-striped">
         <thead>
             <tr >
                 <th>Id</th>
-                <th>Nombre Empresa</th>
-                <th>RUC Empresa</th>
+                <th>Titulo</th>.
+                <th>Contenido</th>
             </tr>
         </thead>
         <tbody >
-            <tr *ngFor="let empresa of empresas">
-                <td>{{empresa.id}}</td>
-                <td>{{empresa.nombre}}</td>
-                <td>{{empresa.ruc}}</td>
+            <tr *ngFor="let post of posts">
+                <td>{{post.id}}</td>
+                <td>{{post.titulo }}</td>
+                <td>{{post.contenido }}</td>
                 <td><button class="btn btn-primary">Editar</button></td>
-                <td><button class="btn btn-danger" (click)="deleteEmpresa(empresa.id)">Eliminar</button></td>
+                <td><button class="btn btn-danger" (click)="deletePost(post.id)">Eliminar</button></td>
             </tr>
         </tbody>
 
     </table>
 </div>
 
+
 <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog">
-        <form [formGroup]="EmpresaForm" (ngSubmit)="createEmpresa()">
+        <form [formGroup]="PostForm" (ngSubmit)="createPost()">
             <div class="modal-content">
                 <div class="modal-header">
-                <h5 class="modal-title" id="staticBackdropLabel">Crear Empresa</h5>
+                <h5 class="modal-title" id="staticBackdropLabel">Crear Post</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <div class="mb-3">
-                        <label for="exampleFormControlInput1" class="form-label">Nombre Empresa</label>
-                        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Nombre de la Empresa" formControlName="nombre">
+                        <label for="exampleFormControlInput1" class="form-label">Titulo</label>
+                        <input type="text" class="form-control" id="exampleFormControlInput1" formControlName="titulo">
                     </div>
                     <div class="mb-3">
-                        <label for="exampleFormControlInput1" class="form-label">RUC Empresa</label>
-                        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Ruc de la Empresa" formControlName="ruc">
+                        <label for="exampleFormControlInput1" class="form-label">Contenido</label>
+                        <input type="text" class="form-control" id="exampleFormControlInput1" formControlName="contenido">
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -52,5 +53,3 @@
         </form>
     </div>
 </div>
-
-

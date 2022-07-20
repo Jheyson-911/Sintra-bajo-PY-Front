@@ -69,6 +69,11 @@ export const navItems: INavData[] = [
     iconComponent: { name: 'cil-file' }
   },
   {
+    name: 'Post',
+    url: '/practica/post',
+    iconComponent: { name: 'cil-file' }
+  },
+  {
     title: true,
     name: 'Extras'
   },

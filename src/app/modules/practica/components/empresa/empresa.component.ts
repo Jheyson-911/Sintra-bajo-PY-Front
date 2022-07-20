@@ -25,11 +25,11 @@ export class EmpresaComponent implements OnInit {
   public EmpresaForm:FormGroup = new FormGroup({})
   public RepresentanteForm:FormGroup = new FormGroup({})
 
-  constructor(private empresaService:EmpresaService, private representanteService:RepresentanteService) { }
+  constructor(private empresaService:EmpresaService, ) { }
 
   ngOnInit(): void {
     this.getEmpresas();
-    this.getRepresentantes();
+
 
     this.EmpresaForm = new FormGroup({
       nombre: new FormControl('', Validators.required),
@@ -74,31 +74,4 @@ export class EmpresaComponent implements OnInit {
     );
   }
 
-  getRepresentantes(){
-    this.representanteService.getRepresentantes().subscribe(
-      (data:any) => {
-        this.messageListRepresentante = data.message;
-        this.representantes = data.representantes;
-        console.log(data);
-      }
-    );
-  }
-
-  createRepresentante(){
-    this.representanteService.createRepresentante(this.RepresentanteForm.value).subscribe(
-      (data:any) => {
-        this.messageListRepresentante = data.message;
-        this.representantes.push(data.representante);
-      }
-    );
-  }
-
-  deleteRepresentante(id:number){
-    this.representanteService.deleteRepresentante(id).subscribe(
-      (data:any) => {
-        this.messageListRepresentante = data.message;
-        this.representantes = data.representantes;
-      }
-    );
-  }
 }

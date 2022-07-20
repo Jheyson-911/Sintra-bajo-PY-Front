@@ -1,1 +1,76 @@
-<p>practicas works!</p>
+
+<div class="container mob-table">
+    <div class="headers">
+        <h2 class="table-title">{{messageListPractica}}</h2>
+        <button class="btn add" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Agregar Practica</button>
+    </div>
+
+    <table class="table table-striped">
+        <thead>
+            <tr >
+                <th>Id</th>
+                <th>Fecha de Inicio</th>
+                <th>Fecha de Finalizacion</th>
+                <th>Horas</th>
+                <th>Estado</th>
+                <th>Estudiante</th>
+            </tr>
+        </thead>
+        <tbody >
+            <tr *ngFor="let practica of practicas">
+                <td>{{practica.id}}</td>
+                <td>{{practica.fecha_inicio}}</td>
+                <td>{{practica.fecha_fin}}</td>
+                <td>{{practica.horas}}</td>
+                <td>{{practica.estado}}</td>
+                <td>{{practica.tblEstudianteId}}</td>
+                <td><button class="btn btn-primary">Editar</button></td>
+                <td><button class="btn btn-danger" (click)="deletePractica(practica.id)">Eliminar</button></td>
+            </tr>
+        </tbody>
+
+    </table>
+</div>
+
+
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <form [formGroup]="PracticaForm" (ngSubmit)="createPractica()">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Crear Practica</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">Fecha de Inicio</label>
+                        <input type="date" class="form-control" id="exampleFormControlInput1" formControlName="fecha_inicio">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">Fecha de Finalizacion</label>
+                        <input type="date" class="form-control" id="exampleFormControlInput1"  formControlName="fecha_fin">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">Horas</label>
+                        <input type="number" class="form-control" id="exampleFormControlInput1"  formControlName="horas">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">Estado</label>
+                        <select class="form-select" id="floatingSelect" aria-label="Floating label select example"  formControlName="estado">
+                            <option value="En proceso">En proceso</option>
+                            <option value="Finalizado">Finalizado</option>
+                        </select >
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">Id Estudiante</label>
+                        <input type="text" class="form-control" id="exampleFormControlInput1" formControlName="tblEstudianteId">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
+                <button type="submit" class="btn btn-primary add" data-bs-dismiss="modal">Crear</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

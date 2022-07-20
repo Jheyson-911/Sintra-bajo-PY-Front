@@ -43,6 +43,7 @@ export class EvaluacionComponent implements OnInit {
     this.EvaluacionForm = new FormGroup({
       fase: new FormControl(''  , [Validators.required]),
       fecha: new FormControl(''  , [Validators.required]),
+      observaciones: new FormControl(''  , [Validators.required]),
       estado: new FormControl(''  , [Validators.required]),
     });
 
@@ -91,6 +92,7 @@ export class EvaluacionComponent implements OnInit {
       (data:any) => {
         this.messageCreateEvaluacion = data.message;
         this.evaluaciones.push(data.evaluacion);
+        this.getEvaluaciones();
       }
     );
   }
