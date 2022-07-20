@@ -49,7 +49,7 @@ export class EstudianteComponent implements OnInit {
         this.messageList = data.message;
         this.estudiantes.push(data.estudiante);
 
-
+        this.getEstudiantes();
 
       }
     );
@@ -60,6 +60,7 @@ deleteEstudiante(id:number){
     (data:any) => {
       this.messageDelete = data.message;
       this.estudiantes = this.estudiantes.filter(estudiante => estudiante._id !== id);
+      this.getEstudiantes();
     }
   );
   }

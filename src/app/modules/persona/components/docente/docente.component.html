@@ -1,34 +1,76 @@
 <div class="container mob-table">
     <div class="headers">
-        <h2 class="table-title">Administrar Docente</h2>
-        <button class="btn add">Agregar Estudiante</button>
+        <h2 class="table-title">{{messageList}}</h2>
+        <button class="btn add" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Agregar Docente</button>
     </div>
 
     <table class="table table-striped">
         <thead>
-            <tr>
+            <tr >
                 <th>Id</th>
-                <th>Codigo</th>
-                <th>Ciclo</th>
-                <th>Año</th>
-                <th>Persona Id</th>
+                <th>Nombres</th>
+                <th>Apellidos</th>
                 <th>Estado</th>
-                <th></th>
-                <th></th>
+                <th>Especialidad</th>
             </tr>
         </thead>
-        <tbody>
-            <tr>
-                <td>1</td>
-                <td>202013998</td>
-                <td>VI</td>
-                <td>2022-2</td>
-                <td>1</td>
-                <td>0</td>
+        <tbody >
+            <tr *ngFor="let docente of docentes">
+                <td>{{docente.id}}</td>
+                <td>{{docente.nombre}}</td>
+                <td>{{docente.apellido}}</td>
+                <td>{{docente.estado}}</td>
+                <td>{{docente.especialidad}}</td>
                 <td><button class="btn btn-primary">Editar</button></td>
-                <td><button class="btn btn-danger">Eleminar</button></td>
+                <td><button class="btn btn-danger" (click)="deleteDocente(docente.id)">Eliminar</button></td>
             </tr>
         </tbody>
 
     </table>
+</div>
+
+
+
+
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <form [formGroup]="DocenteForm" (ngSubmit)="createDocente()">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Crear Docente</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">Nombres</label>
+                        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Codigo del Estudiante" formControlName="nombre">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">Apellidos</label>
+                        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Nombres del Estudiante"formControlName="apellido">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">Estado</label>
+                        <select class="form-select" id="floatingSelect" aria-label="Floating label select example" formControlName="estado">
+                            <option value="Activo">Activo</option>
+                            <option value="Inactivo">Inactivo</option>
+                        </select >
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">Especialidad</label>
+                        <select class="form-select" id="floatingSelect" aria-label="Floating label select example" formControlName="especialidad">
+                            <option value="Redes y Comunicaciones">Redes y Comunicaciones</option>
+                            <option value="Gestion de TI">Gestion de TI</option>
+                            <option value="Desarrollo de Software">Desarrollo de Software</option>
+                            <option value="Administracionde Base de Datos">Administracionde Base de Datos</option>
+                        </select >
+                    </div>
+                </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
+                <button type="submit" class="btn btn-primary add" data-bs-dismiss="modal">Crear</button>
+                </div>
+            </div>
+        </form>
+    </div>
 </div>
