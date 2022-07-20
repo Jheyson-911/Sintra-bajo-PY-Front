@@ -1,1 +1,72 @@
-<p>solitud works!</p>
+
+<div class="container mob-table">
+    <div class="headers">
+        <h2 class="table-title">{{messageList}}</h2>
+        <button class="btn add" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Agregar Estudiante</button>
+    </div>
+
+    <table class="table table-striped">
+        <thead>
+            <tr >
+                <th>Id</th>
+                <th>Nombre Empresa</th>
+                <th>Nombre Dirigido</th>
+                <th>Cargo Dirigido</th>
+                <th>Estado</th>
+                <th>Opciones</th>
+            </tr>
+        </thead>
+        <tbody >
+            <tr *ngFor="let solicitud of solicitudes">
+                <td>{{solicitud.id}}</td>
+                <td>{{solicitud.nombre_empresa}}</td>
+                <td>{{solicitud.nombre_dirigido}}</td>
+                <td>{{solicitud.cargo_dirigido}}</td>
+                <td>{{solicitud.estado_solicitud}}</td>
+                <td><button class="btn btn-primary">Editar</button></td>
+                <td><button class="btn btn-danger" (click)="deleteSolicitud(solicitud.id)">Eliminar</button></td>
+            </tr>
+        </tbody>
+
+    </table>
+</div>
+
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <form [formGroup]="SolicitudForm" (ngSubmit)="createSolicitud()">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Crear Solicitud</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">Nombre Empresa</label>
+                        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Codigo del Estudiante" formControlName="nombre_empresa">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">Nombre Dirigido</label>
+                        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Codigo del Estudiante" formControlName="nombre_dirigido">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">Cargo Dirigido</label>
+                        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Codigo del Estudiante" formControlName="cargo_dirigido">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">Estado Solicitud</label>
+                        <select class="form-select" id="floatingSelect" aria-label="Floating label select example" formControlName="estado_solicitud">
+                            <option value="Aceptado">Aceptado</option>
+                            <option value="En proceso">En proceso</option>
+                            <option value="Rechazado">Grupo 3</option>
+                        </select >
+                    </div>
+                </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
+                <button type="submit" class="btn btn-primary add" data-bs-dismiss="modal">Crear</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
