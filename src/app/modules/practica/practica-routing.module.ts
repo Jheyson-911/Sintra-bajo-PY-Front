@@ -1,3 +1,7 @@
+import { SolitudComponent } from './components/solitud/solitud.component';
+import { PracticasComponent } from './components/practicas/practicas.component';
+import { EmpresaComponent } from './components/empresa/empresa.component';
+import { EvaluacionComponent } from './components/evaluacion/evaluacion.component';
 import { AuthTokenGuard } from './../../guards/auth-token.guard';
 import { ConvenioComponent } from './components/convenio/convenio.component';
 import { DocumentoComponent } from './components/documento/documento.component';
@@ -31,6 +35,22 @@ const routes: Routes = [
       {
         path: 'convenios',
         component: ConvenioComponent
+      },
+      {
+        path: 'evaluacion',
+        component: EvaluacionComponent
+      },
+      {
+        path: 'empresa',
+        component: EmpresaComponent
+      },
+      {
+        path: 'practicas',
+        component: PracticasComponent
+      },
+      {
+        path:'solicitudes',
+        component: SolitudComponent
       }
     ],
     canActivate: [AuthTokenGuard],

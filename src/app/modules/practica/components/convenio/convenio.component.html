@@ -1,1 +1,49 @@
-<p>convenio works!</p>
+<div class="headers">
+    <h2 class="table-title">{{messageList}}</h2>
+    <button class="btn add" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Agregar Usuario</button>
+</div>
+
+<div class="container-fluid flex">
+    <div class="card" style="width: 18rem;" *ngFor="let convenio of convenios">
+        <img [src]="convenio.url_image" class="card-img-top" [alt]="convenio.nombre">
+        <div class="card-body">
+          <h5 class="card-title">{{convenio.nombre}}</h5>
+          <p class="card-text">{{convenio.descripcion}}</p>
+          <a href="google.com" class="btn btn-primary">Go somewhere</a>
+        </div>
+     </div>
+</div>
+
+
+
+  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <form [formGroup]="ConvenioForm" (ngSubmit)="createConvenio()">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Crear Convenio</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">Nombre</label>
+                        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Nombre de la Empresa" formControlName="nombre">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">Url Imagen</label>
+                        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Url"formControlName="url_image">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">Descipcion</label>
+                        <textarea class="form-select" aria-label="Floating label select example" placeholder="Descripcion de la Empresa" formControlName="descripcion">
+                        </textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
+                <button type="submit" class="btn btn-primary add" data-bs-dismiss="modal">Crear</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

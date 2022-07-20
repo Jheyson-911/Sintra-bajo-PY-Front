@@ -19,6 +19,7 @@ import { UsuarioComponent } from './components/usuario/usuario.component';
     PersonaRoutingModule,
     ReactiveFormsModule,
     FormsModule
+
   ]
 })
 export class PersonaModule { }

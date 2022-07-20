@@ -49,6 +49,26 @@ export const navItems: INavData[] = [
     iconComponent: { name: 'cil-file' }
   },
   {
+    name: 'Solicitudes',
+    url: '/practica/solicitudes',
+    iconComponent: { name: 'cil-file' }
+  },
+  {
+    name:'Practicas',
+    url: '/practica/practicas',
+    iconComponent: { name: 'cil-file' }
+  },
+  {
+    name: 'Empresa',
+    url: '/practica/empresa',
+    iconComponent: { name: 'cil-file' }
+  },
+  {
+    name: 'Evaluacion',
+    url: '/practica/evaluacion',
+    iconComponent: { name: 'cil-file' }
+  },
+  {
     title: true,
     name: 'Extras'
   },
