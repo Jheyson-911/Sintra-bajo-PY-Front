@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 })
 export class AuthService {
 
-  private URL = 'https://sintra-bajo-pe.herokuapp.com/api/auth';
+  private URL = 'http://localhost:8080/api/auth';
 
   constructor(private http:HttpClient) { }
   login(user:any){

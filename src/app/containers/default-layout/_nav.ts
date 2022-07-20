@@ -12,12 +12,7 @@ export const navItems: INavData[] = [
   },
   {
     title: true,
-    name: 'Personas'
-  },
-  {
-    name: 'Personas',
-    url: '/persona/personas',
-    iconComponent: { name: 'cil-user' }
+    name: 'Estudiantes'
   },
   {
     name: 'Docentes',
