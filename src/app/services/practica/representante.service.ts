@@ -4,21 +4,20 @@ import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root'
 })
-export class PracticasService {
-  private URL = 'http://localhost:8080/api/practica';
+export class RepresentanteService {
+  private URL = 'http://localhost:8080/api/representante';
 
   constructor(private http:HttpClient) { }
 
-  getPracticas(){
+  getRepresentantes(){
     return this.http.get(`${this.URL}`);
   }
 
-  createPractica(practica:any){
-    return this.http.post(`${this.URL}`,practica);
+  createRepresentante(representante:any){
+    return this.http.post(`${this.URL}`,representante);
   }
 
-  deletePractica(id:number){
+  deleteRepresentante(id:number){
     return this.http.delete(`${this.URL}/${id}`);
   }
-  
 }
