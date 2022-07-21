@@ -42,6 +42,11 @@ const routes: Routes = [
         path: 'practica',
         loadChildren: () =>
           import('./modules/practica/practica.module').then((m) => m.PracticaModule)
+      },
+      {
+        path: 'reporte',
+        loadChildren: () =>
+          import('./modules/reportes/reportes.module').then((m) => m.ReportesModule)
       }
     ],
     canActivate: [AuthTokenGuard],
