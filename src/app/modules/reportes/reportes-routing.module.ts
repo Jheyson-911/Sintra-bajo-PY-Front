@@ -1,3 +1,4 @@
+import { EvaluacionComponent } from './components/evaluacion/evaluacion.component';
 import { EstudiantesComponent } from './components/estudiantes/estudiantes.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -20,6 +21,10 @@ const routes: Routes = [
         data: {
           title: 'Estadisticas'
         }
+      },
+      {
+        path: 'resultados',
+        component: EvaluacionComponent,
       }
     ],
   }

@@ -11,6 +11,13 @@ export class EstudianteService {
   constructor(private http:HttpClient) { }
 
   getNoIniciados(){
-    return this.http.get(this.URL + '/noIniciados');
+    return this.http.get(this.URL + '/reportes/noiniciado');
+  }
+
+  getProceso(){
+    return this.http.get(this.URL + '/reportes/proceso');
+  }
+  getFinalizado(){
+    return this.http.get(this.URL + '/reportes/finalizado');
   }
 }

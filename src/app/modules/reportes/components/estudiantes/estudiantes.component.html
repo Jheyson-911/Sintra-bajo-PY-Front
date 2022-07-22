@@ -1,1 +1,100 @@
-<p>estudiantes works!</p>
+
+
+<div class="container mob-table">
+    <div class="headers">
+        <h2 class="table-title">No inician</h2>
+        <!-- <button class="btn add" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Agregar Post</button> -->
+    </div>
+
+    <table class="table table-striped">
+        <thead>
+            <tr >
+                <th>Id</th>
+                <th>Codigo</th>
+                <th>Nombres</th>
+                <th>Apellidos</th>
+                <th>Ciclo</th>
+                <th>Grupo</th>
+                <th>Dni</th>
+            </tr>
+        </thead>
+        <tbody >
+            <tr *ngFor="let estudiante of EstNoIniciado">
+                <td>{{estudiante.id}}</td>
+                <td>{{estudiante.codigo }}</td>
+                <td>{{estudiante.nombres }}</td>
+                <td>{{estudiante.apellidos }}</td>
+                <td>{{estudiante.ciclo }}</td>
+                <td>{{estudiante.grupo }}</td>
+                <td>{{estudiante.dni }}</td>
+            </tr>
+        </tbody>
+
+    </table>
+</div>
+
+<div class="container mob-table">
+    <div class="headers">
+        <h2 class="table-title">En Proceso</h2>
+        <!-- <button class="btn add" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Agregar Post</button> -->
+    </div>
+
+    <table class="table table-striped">
+        <thead>
+            <tr >
+                <th>Id</th>
+                <th>Codigo</th>
+                <th>Nombres</th>
+                <th>Apellidos</th>
+                <th>Ciclo</th>
+                <th>Grupo</th>
+                <th>Dni</th>
+            </tr>
+        </thead>
+        <tbody >
+            <tr *ngFor="let estudiante of EstProceso">
+                <td>{{estudiante.id}}</td>
+                <td>{{estudiante.codigo }}</td>
+                <td>{{estudiante.nombres }}</td>
+                <td>{{estudiante.apellidos }}</td>
+                <td>{{estudiante.ciclo }}</td>
+                <td>{{estudiante.grupo }}</td>
+                <td>{{estudiante.dni }}</td>
+            </tr>
+        </tbody>
+
+    </table>
+</div>
+
+<div class="container mob-table">
+    <div class="headers">
+        <h2 class="table-title">Finalizado</h2>
+        <!-- <button class="btn add" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Agregar Post</button> -->
+    </div>
+
+    <table class="table table-striped">
+        <thead>
+            <tr >
+                <th>Id</th>
+                <th>Codigo</th>
+                <th>Nombres</th>
+                <th>Apellidos</th>
+                <th>Ciclo</th>
+                <th>Grupo</th>
+                <th>Dni</th>
+            </tr>
+        </thead>
+        <tbody >
+            <tr *ngFor="let estudiante of EstFinalizado">
+                <td>{{estudiante.id}}</td>
+                <td>{{estudiante.codigo }}</td>
+                <td>{{estudiante.nombres }}</td>
+                <td>{{estudiante.apellidos }}</td>
+                <td>{{estudiante.ciclo }}</td>
+                <td>{{estudiante.grupo }}</td>
+                <td>{{estudiante.dni }}</td>
+            </tr>
+        </tbody>
+
+    </table>
+</div>

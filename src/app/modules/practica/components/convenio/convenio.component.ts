@@ -21,7 +21,7 @@ export class ConvenioComponent implements OnInit {
 
   ngOnInit(): void {
     this.getConvenio();
-
+  
     this.ConvenioForm = new FormGroup({
       nombre: new FormControl('', Validators.required),
       url_image: new FormControl('', Validators.required),

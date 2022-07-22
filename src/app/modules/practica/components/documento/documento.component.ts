@@ -19,7 +19,7 @@ export class DocumentoComponent implements OnInit {
     const file = $event.target.files[0];
     console.log(file);
 
-    const docRef = ref(this.storage, `documents/${file.name}`);
+    const docRef = ref(this.storage, `documents/${Date.now()}${file.name}`);
 
     uploadBytes(docRef, file).then((res) => {
       console.log('Uploaded', res);
@@ -41,6 +41,7 @@ export class DocumentoComponent implements OnInit {
           const url = await getDownloadURL(item);
           console.log(url);
           this.documentos.push(url);
+          console.log(this.documentos);
         }
       }
       ).catch(err => {
